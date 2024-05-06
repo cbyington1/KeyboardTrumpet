@@ -1,0 +1,12 @@
+/* styles.css */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Adjust as needed for your layout */
+  }
+  
+  .centered-image {
+    max-width: 25%; /* Adjust the size of the image as needed */
+    max-height: 25%; /* Adjust the size of the image as needed */
+  }
