@@ -11,6 +11,7 @@ import { afterNextRender } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+  title = 'keyboard-trumpet'; // Define the title property
   trumpets: string[] = ['Trumpet0.png', 'Trumpet1.png', 'Trumpet2.png', 'Trumpet12.png', 'Trumpet13.png', 'Trumpet23.png', 'Trumpet123.png', 'Trumpet3.png'];
   notePaths: string[][] = [
     ['assets/TrumpetSounds/FSharp3.mp3', 'assets/TrumpetSounds/A3Cont.mp3'],
@@ -62,6 +63,7 @@ export class AppComponent {
   ZKeyPressed: boolean = false;
   XKeyPressed: boolean = false;
   CKeyPressed: boolean = false;
+  SpaceKeyPressed: boolean = false;
   currNote: string = "";
   audio: HTMLAudioElement | null = null;
   // Declare audioContext as null initially
@@ -139,6 +141,7 @@ export class AppComponent {
       this.playAudio()
     } 
     else if (event.key === 'ArrowDown') {
+      event.preventDefault();
       if(!this.downKeyPressed){
         this.stopAudio()
       }
@@ -306,6 +309,17 @@ export class AppComponent {
       }
     }
 
+    else if(event.key === " "){
+      if(this.SpaceKeyPressed === false){
+        if(this.AKeyPressed || this.SKeyPressed || this.DKeyPressed || this.ZKeyPressed || this.XKeyPressed || this.CKeyPressed){
+          this.stopAudio();
+          this.playAudio();
+        }
+      }
+
+      this.SpaceKeyPressed = true;
+    }
+
 
     if (this.leftKeyPressed && this.downKeyPressed && this.rightKeyPressed) {
       this.changeTrumpet(6);
@@ -391,6 +405,10 @@ export class AppComponent {
       if (this.audioPlaying && this.currNote === "C") {
         this.stopAudio();
       }
+    }
+
+    else if(event.key === " "){
+      this.SpaceKeyPressed = false;
     }
   }
 
@@ -609,4 +627,8 @@ export class AppComponent {
     // Set the initial trumpet image when the component is initialized
     this.currentTrumpet = this.trumpets[this.currentTrumpetIndex];
   }
+
+
+  ///////////////////////////////////////////////////////////////Background
+
 }
