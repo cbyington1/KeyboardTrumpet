@@ -1,7 +1,16 @@
-<!-- app.component.html -->
-<div class="WebTitle" style="display: flex; justify-content: center;margin-top: 0%;">
-  <img src="assets/WebsiteTitle5.png" alt="Website" class="title-image">
+<div class="WebTitle" style="display: flex; justify-content: center; margin-top: 0%;">
+  <img src="assets/WebsiteTitle6.png" alt="Website" class="title-image">
+  <img 
+  [src]="soundBarImage" 
+  alt="Sound Thing" 
+  class="sound-image" 
+  id="sound-image" 
+  (mouseover)="showSlider()" 
+  (mouseout)="hideSlider()">
 </div>
-<div class="container" style="display: flex; justify-content: center; margin-right: 1%; margin-top: -12%;">
+<div id="slider" class="slider" [style.display]="sliderVisible ? 'block' : 'none'" (mouseover)="showSlider()" (mouseout)="hideSlider()">
+  <input type="range" min="0" max="100" value="50" class="slider-control" (input)="onSliderChange($event)">
+</div>
+<div class="container" style="position: relative; display: flex; justify-content: center">
   <img src="assets/Trumpets/{{ currentTrumpet }}" alt="Trumpet" class="centered-image">
 </div>

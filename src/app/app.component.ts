@@ -75,6 +75,12 @@ export class AppComponent {
   // Store the reference to the currently playing source node
   sourceNode: AudioBufferSourceNode | null = null; // Add this line
 
+  sliderVisible: boolean = false; // Add this line
+  private hideSliderTimeout: any; // Add this line
+  sliderValue: number = 50; // Initial value of the slider
+  soundBarImage: string = "assets/SoundSymbols/SoundBar02.png"; // Default image
+
+
   constructor(private sanitizer: DomSanitizer) {
     // Set the initial trumpet image when the component is created
     this.setTrumpet();
@@ -631,4 +637,53 @@ export class AppComponent {
 
   ///////////////////////////////////////////////////////////////Background
 
+  showSlider() {
+    clearTimeout(this.hideSliderTimeout);
+    this.sliderVisible = true;
+  }
+
+  hideSlider() {
+    this.hideSliderTimeout = setTimeout(() => {
+      this.sliderVisible = false;
+    }, 100); // Adjust the delay as needed (500ms in this example)
+  }
+
+  @HostListener('mouseenter', ['$event.target'])
+  onMouseEnter(target: EventTarget) {
+    if (this.isSoundBarOrSlider(target)) {
+      clearTimeout(this.hideSliderTimeout);
+      this.showSlider();
+    }
+  }
+
+  @HostListener('mouseleave', ['$event.target'])
+  onMouseLeave(target: EventTarget) {
+    if (!this.isSoundBarOrSlider(target)) {
+      this.hideSlider();
+    }
+  }
+
+  isSoundBarOrSlider(target: EventTarget): boolean {
+    return (target as HTMLElement).classList.contains('slider') || 
+           (target as HTMLElement).classList.contains('sound-bar');
+  }
+
+  onSliderChange(event: Event) {
+    const target = event.target as HTMLInputElement;
+    const sliderValue = parseInt(target.value);
+    console.log(sliderValue)
+
+    if (sliderValue === 0) {
+      this.soundBarImage = "assets/SoundSymbols/SoundBar001.png";
+    } 
+    else if(sliderValue > 0 && sliderValue < 50){
+      this.soundBarImage = "assets/SoundSymbols/SoundBar01.png";
+    }
+    else if(sliderValue >= 50 && sliderValue < 100){
+      this.soundBarImage = "assets/SoundSymbols/SoundBar02.png";
+    }
+    else {
+      this.soundBarImage = "assets/SoundSymbols/SoundBar03.png";
+    }
+  }
 }
