@@ -54,9 +54,23 @@ export class AppComponent {
 
   currentTrumpetIndex: number = 0;
   currentTrumpet: string = this.trumpets[this.currentTrumpetIndex];
+
+  currentLeft: string = 'left.png'
+  currentDown: string = 'down.png'
+  currentRight: string = 'right.png'
+
+  currentA: string = 'A.png'
+  currentS: string = 'S.png'
+  currentD: string = 'D.png'
+  currentZ: string = 'Z.png'
+  currentX: string = 'X.png'
+  currentC: string = 'C.png'
+  currentSpace: string = 'SPACENEW.png'
+
   leftKeyPressed: boolean = false;
   downKeyPressed: boolean = false;
   rightKeyPressed: boolean = false;
+
   AKeyPressed: boolean = false;
   SKeyPressed: boolean = false;
   DKeyPressed: boolean = false;
@@ -64,6 +78,14 @@ export class AppComponent {
   XKeyPressed: boolean = false;
   CKeyPressed: boolean = false;
   SpaceKeyPressed: boolean = false;
+
+  AkeyFalse: boolean = false;
+  SkeyFalse: boolean = false;
+  DkeyFalse: boolean = false;
+  ZkeyFalse: boolean = false;
+  XkeyFalse: boolean = false;
+  CkeyFalse: boolean = false;
+
   currNote: string = "";
   audio: HTMLAudioElement | null = null;
   // Declare audioContext as null initially
@@ -77,8 +99,8 @@ export class AppComponent {
 
   sliderVisible: boolean = false; // Add this line
   private hideSliderTimeout: any; // Add this line
-  sliderValue: number = 50; // Initial value of the slider
-  soundBarImage: string = "assets/SoundSymbols/SoundBar02.png"; // Default image
+  sliderValue: number = 100; // Initial value of the slider
+  soundBarImage: string = "assets/SoundSymbols/SoundBar03.png"; // Default image
 
 
   constructor(private sanitizer: DomSanitizer) {
@@ -329,19 +351,28 @@ export class AppComponent {
 
     if (this.leftKeyPressed && this.downKeyPressed && this.rightKeyPressed) {
       this.changeTrumpet(6);
+      this.blurKeys(6)
     } else if (this.leftKeyPressed && this.downKeyPressed) {
       this.changeTrumpet(3); // Move to Trumpet12 when both left and down arrow keys are pressed
+      this.blurKeys(3)
     } else if (this.leftKeyPressed && this.rightKeyPressed) {
       this.changeTrumpet(4);
+      this.blurKeys(4)
     } else if (this.downKeyPressed && this.rightKeyPressed) {
       this.changeTrumpet(5);
+      this.blurKeys(5)
     } else if (this.leftKeyPressed) {
       this.changeTrumpet(1); // Move to Trumpet1 when left arrow key is pressed
+      this.blurKeys(1)
     } else if (this.downKeyPressed) {
       this.changeTrumpet(2); // Move to Trumpet2 when down arrow key is pressed
+      this.blurKeys(2)
     } else if (this.rightKeyPressed) {
       this.changeTrumpet(7);
+      this.blurKeys(7)
     }
+
+    this.changeButton()
   }
 
   @HostListener('document:keyup', ['$event'])
@@ -351,7 +382,9 @@ export class AppComponent {
         this.stopAudio()
       }
       this.leftKeyPressed = false;
-      this.changeTrumpet(this.downKeyPressed && this.rightKeyPressed ? 5 : (this.rightKeyPressed ? 7 : (this.downKeyPressed ? 2 : 0)));
+      let trumpetValue: number = (this.downKeyPressed && this.rightKeyPressed ? 5 : (this.rightKeyPressed ? 7 : (this.downKeyPressed ? 2 : 0)));
+      this.changeTrumpet(trumpetValue);
+      this.blurKeys(trumpetValue)
       this.playAudio()
     } 
     else if (event.key === 'ArrowDown') {
@@ -359,7 +392,9 @@ export class AppComponent {
         this.stopAudio()
       }
       this.downKeyPressed = false;
-      this.changeTrumpet(this.leftKeyPressed && this.rightKeyPressed ? 4 : (this.rightKeyPressed ? 7 : (this.leftKeyPressed ? 1 : 0)));
+      let trumpetValue: number = (this.leftKeyPressed && this.rightKeyPressed ? 4 : (this.rightKeyPressed ? 7 : (this.leftKeyPressed ? 1 : 0)));
+      this.changeTrumpet(trumpetValue);
+      this.blurKeys(trumpetValue)
       this.playAudio()
     } 
     else if (event.key === 'ArrowRight') {
@@ -367,7 +402,9 @@ export class AppComponent {
         this.stopAudio()
       }
       this.rightKeyPressed = false;
-      this.changeTrumpet(this.leftKeyPressed && this.downKeyPressed ? 3 : (this.downKeyPressed ? 2 : (this.leftKeyPressed ? 1 : 0)));
+      let trumpetValue: number = (this.leftKeyPressed && this.downKeyPressed ? 3 : (this.downKeyPressed ? 2 : (this.leftKeyPressed ? 1 : 0)));
+      this.changeTrumpet(trumpetValue);
+      this.blurKeys(trumpetValue)
       this.playAudio()
     } 
     else if (event.key === 'a' || event.key === 'A') {
@@ -416,6 +453,8 @@ export class AppComponent {
     else if(event.key === " "){
       this.SpaceKeyPressed = false;
     }
+
+    this.changeButton()
   }
 
 
@@ -430,8 +469,7 @@ export class AppComponent {
   
     // Define the audio file URLs
     let audioFileUrl: string;
-    // let audioFileUrlCont: string; // Commented out, not used
-
+  
     // Call the notes function to get the audio file URLs
     const notes = this.notes();
     if (notes) {
@@ -442,41 +480,35 @@ export class AppComponent {
   
     // Check if audio is not already playing
     if (!this.audioPlaying) {
-      // Create a new AudioBufferSourceNode for A3.mp3
-      const sourceA3 = this.audioContext.createBufferSource();
-      // Get the preloaded AudioBuffer for A3.mp3
-      const audioBufferA3 = this.preloadedAudios[audioFileUrl];
-      if (audioBufferA3) {
+      // Create a new AudioBufferSourceNode for the audio
+      const source = this.audioContext.createBufferSource();
+      // Get the preloaded AudioBuffer for the audio file
+      const audioBuffer = this.preloadedAudios[audioFileUrl];
+      if (audioBuffer) {
         // Assign the preloaded audio buffer to the BufferSourceNode
-        sourceA3.buffer = audioBufferA3;
-        sourceA3.connect(this.audioContext.destination);
-        // Store the source node reference
-        this.sourceNode = sourceA3;
+        source.buffer = audioBuffer;
         
-        // Create a new AudioBufferSourceNode for A3Cont.mp3
-        // const sourceA3Cont = this.audioContext.createBufferSource(); // Commented out, not used
-        // Get the preloaded AudioBuffer for A3Cont.mp3
-        // const audioBufferA3Cont = this.preloadedAudios[audioFileUrlCont]; // Commented out, not used
-        // if (audioBufferA3Cont) { // Commented out, not used
-          // Assign the preloaded audio buffer to the BufferSourceNode
-          // sourceA3Cont.buffer = audioBufferA3Cont; // Commented out, not used
-          // sourceA3Cont.connect(this.audioContext.destination); // Commented out, not used
-
-          // Set the onended event handler for sourceA3 to start playing A3Cont.mp3 after A3.mp3 ends
-          // sourceA3.onended = () => { // Commented out, not used
-            // Calculate the offset to start playing A3Cont.mp3 from the last half of the duration
-            // const offset = audioBufferA3Cont.duration / 2; // Commented out, not used
-            // sourceA3Cont.start(0, offset); // Start playing A3Cont.mp3 from the last half // Commented out, not used
-          // }; // Commented out, not used
-
-          // Start playing A3.mp3
-          sourceA3.start(0);
-          // Set audioPlaying to true
-          this.audioPlaying = true;
-        // } // Commented out, not used
+        // Create a gain node
+        const gainNode = this.audioContext.createGain();
+        // Set the gain value based on the slider value (range is 0 to 1)
+        gainNode.gain.value = this.sliderValue / 100;
+  
+        // Connect the source to the gain node, and then to the destination
+        source.connect(gainNode);
+        gainNode.connect(this.audioContext.destination);
+  
+        // Store the source node reference
+        this.sourceNode = source;
+        
+        // Start the audio playback
+        source.start(0);
+        
+        // Set audioPlaying to true
+        this.audioPlaying = true;
       }
     }
-}
+  }
+  
 
   stopAudio() {
     // Check if audioContext is null
@@ -501,7 +533,7 @@ export class AppComponent {
       if (this.AKeyPressed){
       return ['assets/TrumpetSounds/FSharp3.mp3', 'assets/TrumpetSounds/A3Cont.mp3'];
       }
-      else if (this.SKeyPressed || this.DKeyPressed || this.ZKeyPressed || this.XKeyPressed || this.CKeyPressed){
+      else if (this.SKeyPressed){
         return ['assets/TrumpetSounds/CSharp4.mp3', 'assets/TrumpetSounds/A3Cont.mp3'];
       }
       return null
@@ -511,7 +543,7 @@ export class AppComponent {
       if (this.AKeyPressed){
         return ['assets/TrumpetSounds/G3.mp3', 'assets/TrumpetSounds/A3Cont.mp3'];
       }
-      else if (this.SKeyPressed || this.DKeyPressed || this.ZKeyPressed || this.XKeyPressed || this.CKeyPressed){
+      else if (this.SKeyPressed){
         return ['assets/TrumpetSounds/D4.mp3', 'assets/TrumpetSounds/A3Cont.mp3'];
       }
       return null
@@ -527,7 +559,7 @@ export class AppComponent {
       else if (this.DKeyPressed){
         return ['assets/TrumpetSounds/GSharp4.mp3', 'assets/TrumpetSounds/A3Cont.mp3'];
       }
-      else if (this.ZKeyPressed || this.XKeyPressed || this.CKeyPressed){
+      else if (this.CKeyPressed){
         return ['assets/TrumpetSounds/GSharp5.mp3', 'assets/TrumpetSounds/A3Cont.mp3'];
       }
       return null
@@ -546,7 +578,7 @@ export class AppComponent {
       else if (this.ZKeyPressed){
         return ['assets/TrumpetSounds/CSharp5.mp3', 'assets/TrumpetSounds/A3Cont.mp3'];
       }
-      else if (this.XKeyPressed || this.CKeyPressed){
+      else if (this.CKeyPressed){
         return ['assets/TrumpetSounds/A5.mp3', 'assets/TrumpetSounds/A3Cont.mp3'];
       }
       return null
@@ -640,12 +672,20 @@ export class AppComponent {
   showSlider() {
     clearTimeout(this.hideSliderTimeout);
     this.sliderVisible = true;
+    const soundButton = document.getElementById('sound-image');
+    if (soundButton) {
+      soundButton.style.left = 'calc(50% + 40.5%)'; // Move sound button to the right
+    }
   }
-
+  
   hideSlider() {
     this.hideSliderTimeout = setTimeout(() => {
       this.sliderVisible = false;
-    }, 100); // Adjust the delay as needed (500ms in this example)
+      const soundButton = document.getElementById('sound-image');
+      if (soundButton) {
+        soundButton.style.left = 'calc(50% + 46%)'; // Move sound button back to original position
+      }
+    }, 100);
   }
 
   @HostListener('mouseenter', ['$event.target'])
@@ -671,7 +711,6 @@ export class AppComponent {
   onSliderChange(event: Event) {
     const target = event.target as HTMLInputElement;
     const sliderValue = parseInt(target.value);
-    console.log(sliderValue)
 
     if (sliderValue === 0) {
       this.soundBarImage = "assets/SoundSymbols/SoundBar001.png";
@@ -685,5 +724,217 @@ export class AppComponent {
     else {
       this.soundBarImage = "assets/SoundSymbols/SoundBar03.png";
     }
+    this.sliderValue = sliderValue;
+    console.log(this.sliderValue)
+  }
+
+  changeButton(){
+    if(this.leftKeyPressed){
+      this.currentLeft = 'leftPressed.png'
+    }
+    else{
+      this.currentLeft = 'left.png'
+    }
+    if(this.downKeyPressed){
+      this.currentDown = 'downPressed.png'
+    }
+    else{
+      this.currentDown = 'down.png'
+    }
+    if(this.rightKeyPressed){
+      this.currentRight = 'rightPressed.png'
+    }
+    else{
+      this.currentRight = 'right.png'
+    }
+    if(this.AKeyPressed && !this.AkeyFalse){
+      this.currentA = 'APressed.png'
+      const element = document.getElementById('AButton');
+      if(element){
+        element.style.opacity = '1'; // Set opacity to 50%
+      }
+    }
+    else if(this.AkeyFalse){
+      const element = document.getElementById('AButton');
+      if(element){
+        element.style.opacity = '0.5'; // Set opacity to 50%
+      }
+    }
+    else{
+      const element = document.getElementById('AButton');
+      if(element){
+        element.style.opacity = '1'; // Set opacity to 50%
+      }
+      this.currentA = 'A.png'
+    }
+    if(this.SKeyPressed && !this.SkeyFalse){
+      this.currentS = 'SPressed.png'
+      const element = document.getElementById('SButton');
+      if(element){
+        element.style.opacity = '1'; // Set opacity to 50%
+      }
+    }
+    else if(this.SkeyFalse){
+      const element = document.getElementById('SButton');
+      if(element){
+        element.style.opacity = '0.5'; // Set opacity to 50%
+      }
+    }
+    else{
+      const element = document.getElementById('SButton');
+      if(element){
+        element.style.opacity = '1'; // Set opacity to 50%
+      }
+      this.currentS = 'S.png'
+    }
+    if(this.DKeyPressed && !this.DkeyFalse){
+      this.currentD = 'DPressed.png'
+      const element = document.getElementById('DButton');
+      if(element){
+        element.style.opacity = '1'; // Set opacity to 50%
+      }
+    }
+    else if(this.DkeyFalse){
+      const element = document.getElementById('DButton');
+      if(element){
+        element.style.opacity = '0.5'; // Set opacity to 50%
+      }
+    }
+    else{
+      const element = document.getElementById('DButton');
+      if(element){
+        element.style.opacity = '1'; // Set opacity to 50%
+      }
+      this.currentD = 'D.png'
+    }
+    if(this.ZKeyPressed && !this.ZkeyFalse){
+      this.currentZ = 'ZPressed.png'
+      const element = document.getElementById('ZButton');
+      if(element){
+        element.style.opacity = '1'; // Set opacity to 50%
+      }
+    }
+    else if(this.ZkeyFalse){
+      const element = document.getElementById('ZButton');
+      if(element){
+        element.style.opacity = '0.5'; // Set opacity to 50%
+      }
+    }
+    else{
+      const element = document.getElementById('ZButton');
+      if(element){
+        element.style.opacity = '1'; // Set opacity to 50%
+      }
+      this.currentZ = 'Z.png'
+    }
+    if(this.XKeyPressed && !this.XkeyFalse){
+      this.currentX = 'XPressed.png'
+      const element = document.getElementById('XButton');
+      if(element){
+        element.style.opacity = '1'; // Set opacity to 50%
+      }
+    }
+    else if(this.XkeyFalse){
+      const element = document.getElementById('XButton');
+      if(element){
+        element.style.opacity = '0.5'; // Set opacity to 50%
+      }
+    }
+    else{
+      const element = document.getElementById('XButton');
+      if(element){
+        element.style.opacity = '1'; // Set opacity to 50%
+      }
+      this.currentX = 'X.png'
+    }
+    if(this.CKeyPressed && !this.CkeyFalse){
+      this.currentC = 'CPressed.png'
+      const element = document.getElementById('CButton');
+      if(element){
+        element.style.opacity = '1'; // Set opacity to 50%
+      }
+    }
+    else if(this.CkeyFalse){
+      const element = document.getElementById('CButton');
+      if(element){
+        element.style.opacity = '0.5'; // Set opacity to 50%
+      }
+    }
+    else{
+      const element = document.getElementById('CButton');
+      if(element){
+        element.style.opacity = '1'; // Set opacity to 50%
+      }
+      this.currentC = 'C.png'
+    }
+    if(this.SpaceKeyPressed){
+      this.currentSpace = 'PressedSPACENEW.png'
+    }
+    else{
+      this.currentSpace = 'SPACENEW.png'
+    }
+  }
+
+  blurKeys(delta: number){
+    switch(delta){
+      case 3:
+        console.log("3")
+        this.AkeyFalse = false;
+        this.SkeyFalse = false;
+        this.DkeyFalse = false;
+        this.ZkeyFalse = false;
+        this.XkeyFalse = true;
+        this.CkeyFalse = false;
+        break;
+      case 4:
+        console.log("4")
+        this.AkeyFalse = false;
+        this.SkeyFalse = false;
+        this.DkeyFalse = true;
+        this.ZkeyFalse = true;
+        this.XkeyFalse = true;
+        this.CkeyFalse = true;
+        break;
+      case 5:
+        console.log("5")
+        this.AkeyFalse = false;
+        this.SkeyFalse = false;
+        this.DkeyFalse = false;
+        this.ZkeyFalse = true;
+        this.XkeyFalse = true;
+        this.CkeyFalse = false;
+        break;
+      case 6:
+        console.log("6")
+        this.AkeyFalse = false;
+        this.SkeyFalse = false;
+        this.DkeyFalse = true;
+        this.ZkeyFalse = true;
+        this.XkeyFalse = true;
+        this.CkeyFalse = true;
+        break;
+      case 7:
+        console.log("7")
+        this.AkeyFalse = true;
+        this.SkeyFalse = true;
+        this.DkeyFalse = true;
+        this.ZkeyFalse = true;
+        this.XkeyFalse = true;
+        this.CkeyFalse = true;
+        break;
+      default:
+        console.log("default")
+        this.AkeyFalse = false;
+        this.SkeyFalse = false;
+        this.DkeyFalse = false;
+        this.ZkeyFalse = false;
+        this.XkeyFalse = false;
+        this.CkeyFalse = false;
+        break;
+      }
+  }
+
+  test(){
+    
   }
 }

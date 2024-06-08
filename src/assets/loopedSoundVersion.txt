@@ -1,0 +1,57 @@
+playAudio() {
+    // Check if audioContext is null
+    if (this.audioContext === null) {
+      // If audioContext is null, log an error and return early
+      console.error('AudioContext is null. Cannot play audio.');
+      return;
+    }
+  
+    // Define the audio file URLs
+    let audioFileUrl: string;
+    // let audioFileUrlCont: string; // Commented out, not used
+
+    // Call the notes function to get the audio file URLs
+    const notes = this.notes();
+    if (notes) {
+      [audioFileUrl] = notes; // Remove audioFileUrlCont from the assignment
+    } else {
+      return;
+    }
+  
+    // Check if audio is not already playing
+    if (!this.audioPlaying) {
+      // Create a new AudioBufferSourceNode for A3.mp3
+      const sourceA3 = this.audioContext.createBufferSource();
+      // Get the preloaded AudioBuffer for A3.mp3
+      const audioBufferA3 = this.preloadedAudios[audioFileUrl];
+      if (audioBufferA3) {
+        // Assign the preloaded audio buffer to the BufferSourceNode
+        sourceA3.buffer = audioBufferA3;
+        sourceA3.connect(this.audioContext.destination);
+        // Store the source node reference
+        this.sourceNode = sourceA3;
+        
+        // Create a new AudioBufferSourceNode for A3Cont.mp3
+        // const sourceA3Cont = this.audioContext.createBufferSource(); // Commented out, not used
+        // Get the preloaded AudioBuffer for A3Cont.mp3
+        // const audioBufferA3Cont = this.preloadedAudios[audioFileUrlCont]; // Commented out, not used
+        // if (audioBufferA3Cont) { // Commented out, not used
+          // Assign the preloaded audio buffer to the BufferSourceNode
+          // sourceA3Cont.buffer = audioBufferA3Cont; // Commented out, not used
+          // sourceA3Cont.connect(this.audioContext.destination); // Commented out, not used
+
+          // Set the onended event handler for sourceA3 to start playing A3Cont.mp3 after A3.mp3 ends
+          // sourceA3.onended = () => { // Commented out, not used
+            // Calculate the offset to start playing A3Cont.mp3 from the last half of the duration
+            // const offset = audioBufferA3Cont.duration / 2; // Commented out, not used
+            // sourceA3Cont.start(0, offset); // Start playing A3Cont.mp3 from the last half // Commented out, not used
+          // }; // Commented out, not used
+
+          // Start playing A3.mp3
+          sourceA3.start(0);
+          // Set audioPlaying to true
+          this.audioPlaying = true;
+        // } // Commented out, not used
+      }
+    }
+}

@@ -34,12 +34,12 @@ body, html {
 
 .sound-image {
   position: absolute;
-  left: calc(50% + 20%); /* Adjust the value to move the image to the left or right */
+  left: calc(50% + 46%);
   top: 5%;
   transform: translateY(-50%);
-  max-width: 40%; /* Adjust the size to match the title image */
-  max-height: 40%; /* Adjust the size to match the title image */
-  cursor: pointer;
+  max-width: 40%;
+  max-height: 40%;
+  transition: left 0.5s; /* Add transition for smooth movement */
 }
 
 .slider-container {
@@ -54,9 +54,122 @@ body, html {
   width: 10%; /* Decrease the width to decrease the hover range */
   height: 10%; /* Decrease the height to decrease the hover range */
   top: 4%; /* Adjust the top position as needed */
-  right: 14%; /* Adjust the right position as needed */
+  right: -3%; /* Adjust the right position as needed */
   /*transform: rotate(90deg);*/ /* Rotate the slider 90 degrees clockwise */
 }
 .slider-control {
   width: 50%; /* Adjust the width of the slider control */
+  cursor: pointer;
+}
+
+.AButton {
+  position: absolute;
+  top: -43%; /* Adjust this value to move the image up or down */
+  right: 69%;
+  transform: scale(3.5);
+  image-rendering: pixelated;
+}
+
+.SButton {
+  position: absolute;
+  top: -43%; /* Adjust this value to move the image up or down */
+  right: 65.5%;
+  transform: scale(3.5);
+  image-rendering: pixelated;
+}
+
+
+.DButton {
+  position: absolute;
+  top: -43%; /* Adjust this value to move the image up or down */
+  right: 62%;
+  transform: scale(3.5);
+  image-rendering: pixelated;
+}
+
+.ZButton {
+  position: absolute;
+  top: -36.5%; /* Adjust this value to move the image up or down */
+  right: 69%;
+  transform: scale(3.5);
+  image-rendering: pixelated;
+}
+
+.XButton {
+  position: absolute;
+  top: -36.5%; /* Adjust this value to move the image up or down */
+  right: 65.5%;
+  transform: scale(3.5);
+  image-rendering: pixelated;
+}
+
+.CButton {
+  position: absolute;
+  top: -36.5%; /* Adjust this value to move the image up or down */
+  right: 62%;
+  transform: scale(3.5);
+  image-rendering: pixelated;
+}
+
+.SpaceButton{
+  position: absolute;
+  top: -36.5%; /* Adjust this value to move the image up or down */
+  right: 33.75%;
+  transform: scale(3.5);
+  image-rendering: pixelated;
+}
+
+
+.LeftButton {
+  position: absolute;
+  top: -43%; /* Adjust this value to move the image up or down */
+  right: 34%;
+  transform: scale(3.5);
+  image-rendering: pixelated;
+}
+
+.DownButton {
+  position: absolute;
+  top: -43%; /* Adjust this value to move the image up or down */
+  right: 30.5%;
+  transform: scale(3.5);
+  image-rendering: pixelated;
+}
+
+.RightButton {
+  position: absolute;
+  top: -43%; /* Adjust this value to move the image up or down */
+  right: 27%;
+  transform: scale(3.5);
+  image-rendering: pixelated;
+}
+
+.Sixteen {
+  position: absolute;
+  left: calc(50% + 43.75%);
+  top: 5%;
+  transform: translateY(-50%);
+  max-width: 2.75%;
+  max-height: 2.75%;
+  transition: left 0.5s; /* Add transition for smooth movement */
+  cursor: pointer;
+  image-rendering: pixelated;
+  
+}
+
+.note-container {
+  text-align: center;
+  position: relative; /* Required for absolute positioning of child elements */
+}
+
+.note-text {
+  position: absolute;
+  top: -35rem; /* Adjust this value to move the div higher or lower */
+  left: 46%;
+  transform: translateX(-50%);
+  font-family: 'Press Start 2P', cursive;
+}
+
+.note-container div {
+  display: inline-block; /* Ensure the div width is as per its content */
 }

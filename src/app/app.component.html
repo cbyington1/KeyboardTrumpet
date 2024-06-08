@@ -1,3 +1,4 @@
+
 <div class="WebTitle" style="display: flex; justify-content: center; margin-top: 0%;">
   <img src="assets/WebsiteTitle6.png" alt="Website" class="title-image">
   <img 
@@ -7,10 +8,28 @@
   id="sound-image" 
   (mouseover)="showSlider()" 
   (mouseout)="hideSlider()">
+  <img src="assets/Sixteen.png" alt="Website" class="Sixteen">
 </div>
 <div id="slider" class="slider" [style.display]="sliderVisible ? 'block' : 'none'" (mouseover)="showSlider()" (mouseout)="hideSlider()">
-  <input type="range" min="0" max="100" value="50" class="slider-control" (input)="onSliderChange($event)">
+  <input type="range" min="0" max="100" value="100" class="slider-control" (input)="onSliderChange($event)">
 </div>
 <div class="container" style="position: relative; display: flex; justify-content: center">
   <img src="assets/Trumpets/{{ currentTrumpet }}" alt="Trumpet" class="centered-image">
+</div>
+<div class="note-container">
+  <div class="note-text">Note: </div>
+</div>
+<div class="container" style="position: relative; display: flex; justify-content: center">
+  <img src="assets/Buttons/{{currentA}}" alt="Button" class="AButton" id="AButton">
+  <img src="assets/Buttons/{{currentS}}" alt="Button" class="SButton" id="SButton">
+  <img src="assets/Buttons/{{currentD}}" alt="Button" class="DButton" id="DButton">
+  <img src="assets/Buttons/{{currentZ}}" alt="Button" class="ZButton" id="ZButton">
+  <img src="assets/Buttons/{{currentX}}" alt="Button" class="XButton" id="XButton">
+  <img src="assets/Buttons/{{currentC}}" alt="Button" class="CButton" id="CButton">
+
+  <img src="assets/Buttons/{{currentSpace}}" alt="Button" class="SpaceButton">
+
+  <img src="assets/Buttons/{{currentLeft}}" alt="Button" class="LeftButton">
+  <img src="assets/Buttons/{{currentDown}}" alt="Button" class="DownButton">
+  <img src="assets/Buttons/{{currentRight}}" alt="Button" class="RightButton">
 </div>
