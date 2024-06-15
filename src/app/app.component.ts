@@ -13,43 +13,43 @@ import { afterNextRender } from '@angular/core';
 export class AppComponent {
   title = 'keyboard-trumpet'; // Define the title property
   trumpets: string[] = ['Trumpet0.png', 'Trumpet1.png', 'Trumpet2.png', 'Trumpet12.png', 'Trumpet13.png', 'Trumpet23.png', 'Trumpet123.png', 'Trumpet3.png'];
-  notePaths: string[][] = [
-    ['assets/TrumpetSounds/FSharp3.mp3', 'assets/TrumpetSounds/A3Cont.mp3'],
-    ['assets/TrumpetSounds/G3.mp3', 'assets/TrumpetSounds/A3Cont.mp3'],
-    ['assets/TrumpetSounds/GSharp3.mp3', 'assets/TrumpetSounds/A3Cont.mp3'],
-    ['assets/TrumpetSounds/A3.mp3', 'assets/TrumpetSounds/A3Cont.mp3'],
-    ['assets/TrumpetSounds/ASharp3.mp3', 'assets/TrumpetSounds/A3Cont.mp3'],
-    ['assets/TrumpetSounds/B3.mp3', 'assets/TrumpetSounds/A3Cont.mp3'],
-    ['assets/TrumpetSounds/C4.mp3', 'assets/TrumpetSounds/A3Cont.mp3'],
-    ['assets/TrumpetSounds/CSharp4.mp3', 'assets/TrumpetSounds/A3Cont.mp3'],
-    ['assets/TrumpetSounds/D4.mp3', 'assets/TrumpetSounds/A3Cont.mp3'],
-    ['assets/TrumpetSounds/DSharp4.mp3', 'assets/TrumpetSounds/A3Cont.mp3'],
-    ['assets/TrumpetSounds/E4.mp3', 'assets/TrumpetSounds/A3Cont.mp3'],
-    ['assets/TrumpetSounds/F4.mp3', 'assets/TrumpetSounds/A3Cont.mp3'],
-    ['assets/TrumpetSounds/FSharp4.mp3', 'assets/TrumpetSounds/A3Cont.mp3'],
-    ['assets/TrumpetSounds/G4.mp3', 'assets/TrumpetSounds/A3Cont.mp3'],
-    ['assets/TrumpetSounds/GSharp4.mp3', 'assets/TrumpetSounds/A3Cont.mp3'],
-    ['assets/TrumpetSounds/A4.mp3', 'assets/TrumpetSounds/A3Cont.mp3'],
-    ['assets/TrumpetSounds/ASharp4.mp3', 'assets/TrumpetSounds/A3Cont.mp3'],
-    ['assets/TrumpetSounds/B4.mp3', 'assets/TrumpetSounds/A3Cont.mp3'],
-    ['assets/TrumpetSounds/C5.mp3', 'assets/TrumpetSounds/A3Cont.mp3'],
-    ['assets/TrumpetSounds/CSharp5.mp3', 'assets/TrumpetSounds/A3Cont.mp3'],
-    ['assets/TrumpetSounds/D5.mp3', 'assets/TrumpetSounds/A3Cont.mp3'],
-    ['assets/TrumpetSounds/DSharp5.mp3', 'assets/TrumpetSounds/A3Cont.mp3'],
-    ['assets/TrumpetSounds/E5.mp3', 'assets/TrumpetSounds/A3Cont.mp3'],
-    ['assets/TrumpetSounds/F5.mp3', 'assets/TrumpetSounds/A3Cont.mp3'],
-    ['assets/TrumpetSounds/FSharp5.mp3', 'assets/TrumpetSounds/A3Cont.mp3'],
-    ['assets/TrumpetSounds/G5.mp3', 'assets/TrumpetSounds/A3Cont.mp3'],
-    ['assets/TrumpetSounds/GSharp5.mp3', 'assets/TrumpetSounds/A3Cont.mp3'],
-    ['assets/TrumpetSounds/A5.mp3', 'assets/TrumpetSounds/A3Cont.mp3'],
-    ['assets/TrumpetSounds/ASharp5.mp3', 'assets/TrumpetSounds/A3Cont.mp3'],
-    ['assets/TrumpetSounds/B5.mp3', 'assets/TrumpetSounds/A3Cont.mp3'],
-    ['assets/TrumpetSounds/C6.mp3', 'assets/TrumpetSounds/A3Cont.mp3'],
-    ['assets/TrumpetSounds/CSharp6.mp3', 'assets/TrumpetSounds/A3Cont.mp3'],
-    ['assets/TrumpetSounds/D6.mp3', 'assets/TrumpetSounds/A3Cont.mp3'],
-    ['assets/TrumpetSounds/DSharp6.mp3', 'assets/TrumpetSounds/A3Cont.mp3'],
-    ['assets/TrumpetSounds/E6.mp3', 'assets/TrumpetSounds/A3Cont.mp3'],
-    ['assets/TrumpetSounds/F6.mp3', 'assets/TrumpetSounds/A3Cont.mp3'],
+  notePaths: string[] = [
+    'assets/TrumpetSounds/FSharp3.mp3',
+    'assets/TrumpetSounds/G3.mp3',
+    'assets/TrumpetSounds/GSharp3.mp3',
+    'assets/TrumpetSounds/A3.mp3',
+    'assets/TrumpetSounds/ASharp3.mp3',
+    'assets/TrumpetSounds/B3.mp3',
+    'assets/TrumpetSounds/C4.mp3',
+    'assets/TrumpetSounds/CSharp4.mp3',
+    'assets/TrumpetSounds/D4.mp3',
+    'assets/TrumpetSounds/DSharp4.mp3',
+    'assets/TrumpetSounds/E4.mp3',
+    'assets/TrumpetSounds/F4.mp3',
+    'assets/TrumpetSounds/FSharp4.mp3',
+    'assets/TrumpetSounds/G4.mp3',
+    'assets/TrumpetSounds/GSharp4.mp3',
+    'assets/TrumpetSounds/A4.mp3',
+    'assets/TrumpetSounds/ASharp4.mp3',
+    'assets/TrumpetSounds/B4.mp3',
+    'assets/TrumpetSounds/C5.mp3',
+    'assets/TrumpetSounds/CSharp5.mp3',
+    'assets/TrumpetSounds/D5.mp3',
+    'assets/TrumpetSounds/DSharp5.mp3',
+    'assets/TrumpetSounds/E5.mp3',
+    'assets/TrumpetSounds/F5.mp3',
+    'assets/TrumpetSounds/FSharp5.mp3',
+    'assets/TrumpetSounds/G5.mp3',
+    'assets/TrumpetSounds/GSharp5.mp3',
+    'assets/TrumpetSounds/A5.mp3',
+    'assets/TrumpetSounds/ASharp5.mp3',
+    'assets/TrumpetSounds/B5.mp3',
+    'assets/TrumpetSounds/C6.mp3',
+    'assets/TrumpetSounds/CSharp6.mp3',
+    'assets/TrumpetSounds/D6.mp3',
+    'assets/TrumpetSounds/DSharp6.mp3',
+    'assets/TrumpetSounds/E6.mp3',
+    'assets/TrumpetSounds/F6.mp3',
   ];
 
   currentTrumpetIndex: number = 0;
@@ -139,28 +139,27 @@ export class AppComponent {
     }
   
     // Define the audio file URLs
-    // Define the audio file URLs
-    const audioFileUrls: string[] = [];
-
-    this.notePaths.forEach((note) => {
-      audioFileUrls.push(note[0], note[1]);
-    });
+    const audioFileUrls: string[] = this.notePaths; // Use the single array directly
   
     // Preload each audio file
     for (const url of audioFileUrls) {
       const response = await fetch(url);
       const arrayBuffer = await response.arrayBuffer();
+      
       // Check if audioContext is null
       if (this.audioContext === null) {
         // If audioContext is null, log an error and return early
         console.error('AudioContext is null. Cannot decode audio data.');
         return;
       }
+  
       const audioBuffer = await this.audioContext.decodeAudioData(arrayBuffer);
+      
       // Store the preloaded Audio object
       this.preloadedAudios[url] = audioBuffer;
     }
   }
+  
 
   @HostListener('document:keydown', ['$event'])
   handleKeyDownEvent(event: KeyboardEvent) {
@@ -979,6 +978,7 @@ export class AppComponent {
     noteText.textContent = 'Note: ' + delta;
   }
 
+  /*
   popUp() {
     var popUp = document.getElementById('popup');
     if (popUp && popUp.style.visibility === 'visible') {
@@ -988,4 +988,5 @@ export class AppComponent {
     }
     console.log("yo");
   }
+    */
 }
