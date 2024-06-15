@@ -8,8 +8,25 @@
   id="sound-image" 
   (mouseover)="showSlider()" 
   (mouseout)="hideSlider()">
-  <img src="assets/Sixteen.png" alt="Website" class="Sixteen">
+  <img src="assets/Sixteen.png" alt="Website" class="Sixteen" (click)="ShowNote()" >
+  <a href="https://github.com/cbyington1" target="_blank">
+    <img src="assets/Socials/GithubSymbol.png" alt="Button" class="GithubSymbol" id="GithubSymbol">
+  </a>
+  <a href="https://www.linkedin.com/in/camden-byington-bbbb71220/" target="_blank">
+    <img src="assets/Socials/LinkedinSymbol.png" alt="Button" class="LinkedinSymbol" id="LinkedinSymbol">
+  </a>
+  <!--
+  <img src="assets/books.png" alt="Website" class="books" (click)="popUp()">
+  -->
 </div>
+ <!--
+<div id="popup" class="popup" id="popup">
+  <div class="popup-content">
+    <div id="title-text" class="title-text">How to play Keyboard Trumpet </div>
+    <img src="assets/RedX.png" class="RedX" id="RedX" (click)="popUp()">
+  </div>
+  </div>
+  -->
 <div id="slider" class="slider" [style.display]="sliderVisible ? 'block' : 'none'" (mouseover)="showSlider()" (mouseout)="hideSlider()">
   <input type="range" min="0" max="100" value="100" class="slider-control" (input)="onSliderChange($event)">
 </div>
@@ -17,7 +34,7 @@
   <img src="assets/Trumpets/{{ currentTrumpet }}" alt="Trumpet" class="centered-image">
 </div>
 <div class="note-container">
-  <div class="note-text">Note: </div>
+  <div id="note-text" class="note-text">Note: </div>
 </div>
 <div class="container" style="position: relative; display: flex; justify-content: center">
   <img src="assets/Buttons/{{currentA}}" alt="Button" class="AButton" id="AButton">

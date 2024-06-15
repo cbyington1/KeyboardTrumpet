@@ -86,7 +86,7 @@ export class AppComponent {
   XkeyFalse: boolean = false;
   CkeyFalse: boolean = false;
 
-  currNote: string = "";
+  currNote: string = "";//Current keyboard button pressed
   audio: HTMLAudioElement | null = null;
   // Declare audioContext as null initially
   audioContext: AudioContext | null = null;
@@ -101,6 +101,10 @@ export class AppComponent {
   private hideSliderTimeout: any; // Add this line
   sliderValue: number = 100; // Initial value of the slider
   soundBarImage: string = "assets/SoundSymbols/SoundBar03.png"; // Default image
+
+  currActualNote: string = ""; //actual note like musically and shit
+
+  isPopupVisible = false;//for pop up info
 
 
   constructor(private sanitizer: DomSanitizer) {
@@ -512,6 +516,7 @@ export class AppComponent {
 
   stopAudio() {
     // Check if audioContext is null
+    this.displayNewNote("");
     if (this.audioContext === null) {
       // If audioContext is null, log an error and return early
       console.error('AudioContext is null. Cannot stop audio.');
@@ -531,9 +536,11 @@ export class AppComponent {
     if (this.leftKeyPressed && this.downKeyPressed && this.rightKeyPressed) {
       // F
       if (this.AKeyPressed){
+        this.displayNewNote("F#3")
       return ['assets/TrumpetSounds/FSharp3.mp3', 'assets/TrumpetSounds/A3Cont.mp3'];
       }
       else if (this.SKeyPressed){
+        this.displayNewNote("C#4")
         return ['assets/TrumpetSounds/CSharp4.mp3', 'assets/TrumpetSounds/A3Cont.mp3'];
       }
       return null
@@ -541,9 +548,11 @@ export class AppComponent {
     else if (this.leftKeyPressed && !this.downKeyPressed && this.rightKeyPressed) {
       // G
       if (this.AKeyPressed){
+        this.displayNewNote("G3")
         return ['assets/TrumpetSounds/G3.mp3', 'assets/TrumpetSounds/A3Cont.mp3'];
       }
       else if (this.SKeyPressed){
+        this.displayNewNote("D4")
         return ['assets/TrumpetSounds/D4.mp3', 'assets/TrumpetSounds/A3Cont.mp3'];
       }
       return null
@@ -551,15 +560,19 @@ export class AppComponent {
     else if (!this.leftKeyPressed && this.downKeyPressed && this.rightKeyPressed) {
       // G#
       if (this.AKeyPressed){
+        this.displayNewNote("G#3")
         return ['assets/TrumpetSounds/GSharp3.mp3', 'assets/TrumpetSounds/A3Cont.mp3'];
       }
       else if (this.SKeyPressed){
+        this.displayNewNote("D#4")
         return ['assets/TrumpetSounds/DSharp4.mp3', 'assets/TrumpetSounds/A3Cont.mp3'];
       }
       else if (this.DKeyPressed){
+        this.displayNewNote("G#4")
         return ['assets/TrumpetSounds/GSharp4.mp3', 'assets/TrumpetSounds/A3Cont.mp3'];
       }
       else if (this.CKeyPressed){
+        this.displayNewNote("G#5")
         return ['assets/TrumpetSounds/GSharp5.mp3', 'assets/TrumpetSounds/A3Cont.mp3'];
       }
       return null
@@ -567,18 +580,23 @@ export class AppComponent {
     else if (this.leftKeyPressed && this.downKeyPressed && !this.rightKeyPressed) {
       // A
       if (this.AKeyPressed){
+        this.displayNewNote("A3")
         return ['assets/TrumpetSounds/A3.mp3', 'assets/TrumpetSounds/A3Cont.mp3'];
       }
       else if (this.SKeyPressed){
+        this.displayNewNote("E4")
         return ['assets/TrumpetSounds/E4.mp3', 'assets/TrumpetSounds/A3Cont.mp3'];
       }
       else if (this.DKeyPressed){
+        this.displayNewNote("A4")
         return ['assets/TrumpetSounds/A4.mp3', 'assets/TrumpetSounds/A3Cont.mp3'];
       }
       else if (this.ZKeyPressed){
+        this.displayNewNote("C#5")
         return ['assets/TrumpetSounds/CSharp5.mp3', 'assets/TrumpetSounds/A3Cont.mp3'];
       }
       else if (this.CKeyPressed){
+        this.displayNewNote("A5")
         return ['assets/TrumpetSounds/A5.mp3', 'assets/TrumpetSounds/A3Cont.mp3'];
       }
       return null
@@ -586,21 +604,27 @@ export class AppComponent {
     else if (this.leftKeyPressed && !this.downKeyPressed && !this.rightKeyPressed) {
       // A#
       if (this.AKeyPressed){
+        this.displayNewNote("A#3")
         return ['assets/TrumpetSounds/ASharp3.mp3', 'assets/TrumpetSounds/A3Cont.mp3'];
       }
       else if (this.SKeyPressed){
+        this.displayNewNote("F4")
         return ['assets/TrumpetSounds/F4.mp3', 'assets/TrumpetSounds/A3Cont.mp3'];
       }
       else if (this.DKeyPressed){
+        this.displayNewNote("A#4")
         return ['assets/TrumpetSounds/ASharp4.mp3', 'assets/TrumpetSounds/A3Cont.mp3'];
       }
       else if (this.ZKeyPressed){
+        this.displayNewNote("D5")
         return ['assets/TrumpetSounds/D5.mp3', 'assets/TrumpetSounds/A3Cont.mp3'];
       }
       else if (this.XKeyPressed){
+        this.displayNewNote("F5")
         return ['assets/TrumpetSounds/F5.mp3', 'assets/TrumpetSounds/A3Cont.mp3'];
       }
       else if (this.CKeyPressed){
+        this.displayNewNote("A#5")
         return ['assets/TrumpetSounds/ASharp5.mp3', 'assets/TrumpetSounds/A3Cont.mp3'];
       }
       return null
@@ -608,21 +632,27 @@ export class AppComponent {
     else if (!this.leftKeyPressed && this.downKeyPressed && !this.rightKeyPressed) {
       // B
       if (this.AKeyPressed){
+        this.displayNewNote("B3")
         return ['assets/TrumpetSounds/B3.mp3', 'assets/TrumpetSounds/A3Cont.mp3'];
       }
       else if (this.SKeyPressed){
+        this.displayNewNote("F#4")
         return ['assets/TrumpetSounds/FSharp4.mp3', 'assets/TrumpetSounds/A3Cont.mp3'];
       }
       else if (this.DKeyPressed){
+        this.displayNewNote("B4")
         return ['assets/TrumpetSounds/B4.mp3', 'assets/TrumpetSounds/A3Cont.mp3'];
       }
       else if (this.ZKeyPressed){
+        this.displayNewNote("D#5")
         return ['assets/TrumpetSounds/DSharp5.mp3', 'assets/TrumpetSounds/A3Cont.mp3'];
       }
       else if (this.XKeyPressed){
+        this.displayNewNote("F#5")
         return ['assets/TrumpetSounds/FSharp5.mp3', 'assets/TrumpetSounds/A3Cont.mp3'];
       }
       else if (this.CKeyPressed){
+        this.displayNewNote("B5")
         return ['assets/TrumpetSounds/B5.mp3', 'assets/TrumpetSounds/A3Cont.mp3'];
       }
       return null
@@ -630,21 +660,27 @@ export class AppComponent {
     else if (!this.leftKeyPressed && !this.downKeyPressed && !this.rightKeyPressed) {
       // C
       if (this.AKeyPressed){
+        this.displayNewNote("C4")
         return ['assets/TrumpetSounds/C4.mp3', 'assets/TrumpetSounds/A3Cont.mp3'];
       }
       else if (this.SKeyPressed){
+        this.displayNewNote("G4")
         return ['assets/TrumpetSounds/G4.mp3', 'assets/TrumpetSounds/A3Cont.mp3'];
       }
       else if (this.DKeyPressed){
+        this.displayNewNote("C5")
         return ['assets/TrumpetSounds/C5.mp3', 'assets/TrumpetSounds/A3Cont.mp3'];
       }
       else if (this.ZKeyPressed){
+        this.displayNewNote("E5")
         return ['assets/TrumpetSounds/E5.mp3', 'assets/TrumpetSounds/A3Cont.mp3'];
       }
       else if (this.XKeyPressed){
+        this.displayNewNote("G5")
         return ['assets/TrumpetSounds/G5.mp3', 'assets/TrumpetSounds/A3Cont.mp3'];
       }
       else if (this.CKeyPressed){
+        this.displayNewNote("C6")
         return ['assets/TrumpetSounds/C6.mp3', 'assets/TrumpetSounds/A3Cont.mp3'];
       }
       return null
@@ -674,7 +710,7 @@ export class AppComponent {
     this.sliderVisible = true;
     const soundButton = document.getElementById('sound-image');
     if (soundButton) {
-      soundButton.style.left = 'calc(50% + 40.5%)'; // Move sound button to the right
+      soundButton.style.left = 'calc(50% + 37.5%)'; // Move sound button to the right
     }
   }
   
@@ -683,7 +719,7 @@ export class AppComponent {
       this.sliderVisible = false;
       const soundButton = document.getElementById('sound-image');
       if (soundButton) {
-        soundButton.style.left = 'calc(50% + 46%)'; // Move sound button back to original position
+        soundButton.style.left = 'calc(50% + 43%)'; // Move sound button back to original position
       }
     }, 100);
   }
@@ -725,7 +761,6 @@ export class AppComponent {
       this.soundBarImage = "assets/SoundSymbols/SoundBar03.png";
     }
     this.sliderValue = sliderValue;
-    console.log(this.sliderValue)
   }
 
   changeButton(){
@@ -878,7 +913,6 @@ export class AppComponent {
   blurKeys(delta: number){
     switch(delta){
       case 3:
-        console.log("3")
         this.AkeyFalse = false;
         this.SkeyFalse = false;
         this.DkeyFalse = false;
@@ -887,7 +921,6 @@ export class AppComponent {
         this.CkeyFalse = false;
         break;
       case 4:
-        console.log("4")
         this.AkeyFalse = false;
         this.SkeyFalse = false;
         this.DkeyFalse = true;
@@ -896,7 +929,6 @@ export class AppComponent {
         this.CkeyFalse = true;
         break;
       case 5:
-        console.log("5")
         this.AkeyFalse = false;
         this.SkeyFalse = false;
         this.DkeyFalse = false;
@@ -905,7 +937,6 @@ export class AppComponent {
         this.CkeyFalse = false;
         break;
       case 6:
-        console.log("6")
         this.AkeyFalse = false;
         this.SkeyFalse = false;
         this.DkeyFalse = true;
@@ -914,7 +945,6 @@ export class AppComponent {
         this.CkeyFalse = true;
         break;
       case 7:
-        console.log("7")
         this.AkeyFalse = true;
         this.SkeyFalse = true;
         this.DkeyFalse = true;
@@ -923,7 +953,6 @@ export class AppComponent {
         this.CkeyFalse = true;
         break;
       default:
-        console.log("default")
         this.AkeyFalse = false;
         this.SkeyFalse = false;
         this.DkeyFalse = false;
@@ -934,7 +963,29 @@ export class AppComponent {
       }
   }
 
-  test(){
-    
+
+  ShowNote() {
+    var noteText = document.getElementById('note-text');
+    if (noteText && noteText.style.display === 'inline') {
+      noteText.style.display = 'none';
+    } else if (noteText) {
+      noteText.style.display = 'inline';
+    }
+  }
+
+  displayNewNote(delta: string) {
+    var noteText = document.getElementById('note-text');
+    if(noteText)
+    noteText.textContent = 'Note: ' + delta;
+  }
+
+  popUp() {
+    var popUp = document.getElementById('popup');
+    if (popUp && popUp.style.visibility === 'visible') {
+      popUp.style.visibility = 'hidden';
+    } else if (popUp) {
+      popUp.style.visibility = 'visible';
+    }
+    console.log("yo");
   }
 }

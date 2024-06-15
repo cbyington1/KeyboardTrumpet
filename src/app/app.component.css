@@ -34,8 +34,8 @@ body, html {
 
 .sound-image {
   position: absolute;
-  left: calc(50% + 46%);
-  top: 5%;
+  left: calc(50% + 43%);
+  top: 5.125%;
   transform: translateY(-50%);
   max-width: 40%;
   max-height: 40%;
@@ -54,12 +54,14 @@ body, html {
   width: 10%; /* Decrease the width to decrease the hover range */
   height: 10%; /* Decrease the height to decrease the hover range */
   top: 4%; /* Adjust the top position as needed */
-  right: -3%; /* Adjust the right position as needed */
+  right: 0%; /* Adjust the right position as needed */
   /*transform: rotate(90deg);*/ /* Rotate the slider 90 degrees clockwise */
+  pointer-events: none; /* Disable pointer events on the container */
 }
 .slider-control {
   width: 50%; /* Adjust the width of the slider control */
   cursor: pointer;
+  pointer-events: auto; /* Enable pointer events on the slider control */
 }
 
 .AButton {
@@ -146,7 +148,7 @@ body, html {
 
 .Sixteen {
   position: absolute;
-  left: calc(50% + 43.75%);
+  left: calc(50% + 46.5%);
   top: 5%;
   transform: translateY(-50%);
   max-width: 2.75%;
@@ -165,11 +167,94 @@ body, html {
 .note-text {
   position: absolute;
   top: -35rem; /* Adjust this value to move the div higher or lower */
-  left: 46%;
+  left: 47.75%;
   transform: translateX(-50%);
   font-family: 'Press Start 2P', cursive;
 }
 
 .note-container div {
-  display: inline-block; /* Ensure the div width is as per its content */
+  display: none; /* Ensure the div width is as per its content */
 }
+
+.GithubSymbol {
+  position: absolute; /* or absolute, or fixed, depending on your layout needs */
+  top: .85%; /* Adjust the value to move the div up */
+  left: 0%;
+  transform: translateX(-50%); /* Center horizontally */
+  transform: scale(0.75);
+  image-rendering: pixelated;
+  cursor: pointer;
+}
+
+.LinkedinSymbol {
+  position: absolute; /* or absolute, or fixed, depending on your layout needs */
+  top: .5%; /* Adjust the value to move the div up */
+  left: 3.25%;
+  transform: translateX(-50%); /* Center horizontally */
+  transform: scale(0.72);
+  image-rendering: pixelated;
+  cursor: pointer;
+}
+
+/*
+.books{
+  position: absolute;
+  left: calc(50% + 41.5%);
+  top: 5.5%;
+  transform: translateY(-50%);
+  max-width: 4.25%;
+  max-height: 4.25%;
+  transition: left 0.5s;
+  cursor: pointer;
+  image-rendering: pixelated;
+  
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  visibility: hidden; 
+}
+
+.popup.show {
+  visibility: visible; 
+}
+
+.popup-content {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  width: 300%; 
+  height: 400%; 
+  max-width: 1200px; 
+  max-height: 800px; 
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  z-index: 1100; 
+}
+
+.RedX {
+  position: absolute;
+  top: 7.5%; 
+  right: 18%; 
+  max-width: 7%;
+  max-height: 7%;
+  cursor: pointer;
+}
+
+.title-text{
+  position: absolute;
+  font-family: 'Press Start 2P', cursive;
+  top: 10%;
+  right: 43.5%;
+  transform: scale(2);
+}
+*/
