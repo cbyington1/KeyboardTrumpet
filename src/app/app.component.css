@@ -43,30 +43,28 @@ body, html {
   }
   
   .slider-container {
-  transform: translateY(-50%);
-  }
-  
-  .slider {
-  display: flex;
-  position: absolute;
-  justify-content: center;
-  align-items: center;
-  width: 10%; /* Decrease the width to decrease the hover range */
-  height: 10%; /* Decrease the height to decrease the hover range */
-  top: 4%; /* Adjust the top position as needed */
-  right: 0%; /* Adjust the right position as needed */
-  transform: rotate(90deg); /* Rotate the slider 90 degrees clockwise */
-  pointer-events: none; /* Disable pointer events on the container */
-  }
-  .slider-control {
-  width: 50%; /* Adjust the width of the slider control */
-  cursor: pointer;
-  pointer-events: auto; /* Enable pointer events on the slider control */
-  }
-  
+    transform: translateY(-50%);
+}
+
+.slider {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    width: 10%; /* Adjust the width as needed */
+    height: 10%; /* Adjust the height as needed */
+    top: 4.05%; /* Adjust the top position as needed */
+    right: 0%; /* Adjust the right position as needed */
+    /* Remove the rotation */
+    /* transform: rotate(90deg); */
+}
+
+.slider-control {
+    width: 50%; /* Adjust the width of the slider control */
+}
   .AButton {
   position: absolute;
-  top: -43%; /* Adjust this value to move the image up or down */
+  top: -43%; /* Adjust this value to move the image up or down -43, 69*/
   right: 69%;
   transform: scale(3.5);
   image-rendering: pixelated;
@@ -193,66 +191,251 @@ body, html {
   image-rendering: pixelated;
   cursor: pointer;
   }
-  
-  /*
-  .books{
-  position: absolute;
-  left: calc(50% + 41.5%);
-  top: 5.5%;
-  transform: translateY(-50%);
-  max-width: 4.25%;
-  max-height: 4.25%;
-  transition: left 0.5s;
-  cursor: pointer;
-  image-rendering: pixelated;
-  
+
+  /* Styles for devices with a screen width of 768px or less */
+@media (max-width: 1680px) {
+  .AButton,
+  .SButton,
+  .DButton,
+  .ZButton,
+  .XButton,
+  .CButton, 
+  .SpaceButton,
+  .LeftButton,
+  .DownButton,
+  .RightButton{
+    transform: scale(3); /* Adjust this value as needed */
+  }
+  .GithubSymbol{
+    transform: scale(0.7); /* Adjust this value as needed */
+  }
+  .LinkedinSymbol{
+    transform: scale(0.68); /* Adjust this value as needed */
+  }
+  .LeftButton{
+    right: 35%;
+  }
+  .DownButton{
+    right: 31.5%;
+  }
+  .RightButton{
+    right: 28%;
+  }
+  .ZButton,
+  .XButton,
+  .CButton,
+  .SpaceButton{
+    top: -37.5%; /* Adjust this value to move the image up or down */
+  }
+}
+
+  /* Styles for devices with a screen width of 768px or less */
+  @media (max-width: 1600px) {
+    .AButton,
+    .SButton,
+    .DButton,
+    .ZButton,
+    .XButton,
+    .CButton, 
+    .SpaceButton,
+    .LeftButton,
+    .DownButton,
+    .RightButton{
+      transform: scale(2.9); /* Adjust this value as needed */
+    }
+    .GithubSymbol{
+      transform: scale(0.7); /* Adjust this value as needed */
+    }
+    .LinkedinSymbol{
+      transform: scale(0.68); /* Adjust this value as needed */
+    }
+    .LeftButton{
+      right: 35%;
+    }
+    .DownButton{
+      right: 31.5%;
+    }
+    .RightButton{
+      right: 28%;
+    }
+    .ZButton,
+    .XButton,
+    .CButton,
+    .SpaceButton{
+      top: -37%; /* Adjust this value to move the image up or down */
+    }
+  }
+
+  /* Styles for devices with a screen width of 768px or less */
+  @media (max-width: 1440px) {
+    .AButton,
+    .SButton,
+    .DButton,
+    .ZButton,
+    .XButton,
+    .CButton, 
+    .SpaceButton,
+    .LeftButton,
+    .DownButton,
+    .RightButton{
+      transform: scale(2.6); /* Adjust this value as needed */
+    }
+    .GithubSymbol{
+      transform: scale(0.6); /* Adjust this value as needed */
+    }
+    .LinkedinSymbol{
+      transform: scale(0.58); /* Adjust this value as needed */
+    }
+    .LeftButton{
+      right: 35%;
+    }
+    .DownButton{
+      right: 31.5%;
+    }
+    .RightButton{
+      right: 28%;
+    }
+    .ZButton,
+    .XButton,
+    .CButton,
+    .SpaceButton{
+      top: -37.5%; /* Adjust this value to move the image up or down */
+    }
+    .sound-image{
+      max-width: 35%;
+      max-height: 35%;
+    }
+    .slider{
+      width: 9.5%;
+    }
+  }
+
+    /* Styles for devices with a screen width of 768px or less */
+    @media (max-width: 1366px) {
+      .AButton,
+      .SButton,
+      .DButton,
+      .ZButton,
+      .XButton,
+      .CButton, 
+      .SpaceButton,
+      .LeftButton,
+      .DownButton,
+      .RightButton{
+        transform: scale(2.4); /* Adjust this value as needed */
+      }
+      .GithubSymbol{
+        transform: scale(0.55); /* Adjust this value as needed */
+      }
+      .LinkedinSymbol{
+        transform: scale(0.52); /* Adjust this value as needed */
+      }
+      .LeftButton{
+        right: 35.5%;
+      }
+      .DownButton{
+        right: 32%;
+      }
+      .RightButton{
+        right: 28.5%;
+      }
+      .sound-image{
+        max-width: 3.5%;
+        max-height: 3.5%;
+      }
+
+      .slider{
+        top: 3.95%;
+      }
+
+      .note-text{
+        top: -30rem;
+      }
+    }
+
+      /* Styles for devices with a screen width of 768px or less */
+  @media (max-width: 1280px) {
+    .AButton,
+    .SButton,
+    .DButton,
+    .ZButton,
+    .XButton,
+    .CButton, 
+    .SpaceButton,
+    .LeftButton,
+    .DownButton,
+    .RightButton{
+      transform: scale(2.3); /* Adjust this value as needed */
+    }
+    .GithubSymbol{
+      transform: scale(0.52); /* Adjust this value as needed */
+    }
+    .LinkedinSymbol{
+      transform: scale(0.51); /* Adjust this value as needed */
+    }
+    .LeftButton{
+      right: 35.5%;
+    }
+    .DownButton{
+      right: 32%;
+    }
+    .RightButton{
+      right: 28.5%;
+    }
+    .sound-image{
+      max-width: 3.25%;
+      max-height: 3.25%;
+    }
   }
   
-  .popup {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  visibility: hidden;
-  }
+    /* Styles for devices with a screen width of 768px or less */
+    @media (max-width: 1024px) {
+      .AButton,
+      .SButton,
+      .DButton,
+      .ZButton,
+      .XButton,
+      .CButton, 
+      .SpaceButton,
+      .LeftButton,
+      .DownButton,
+      .RightButton{
+        transform: scale(1.9); /* Adjust this value as needed */
+      }
+      .GithubSymbol{
+        transform: scale(0.45); /* Adjust this value as needed */
+      }
+      .LinkedinSymbol{
+        transform: scale(0.44); /* Adjust this value as needed */
+      }
+      .LeftButton{
+        right: 36.5%;
+      }
+      .DownButton{
+        right: 33%;
+      }
+      .RightButton{
+        right: 29.5%;
+      }
+      .ZButton,
+      .XButton,
+      .CButton,
+      .SpaceButton{
+        top: -38.5%; /* Adjust this value to move the image up or down */
+      }
+    }
+
+     /* Styles for devices with a screen width of 768px or less */
+     @media (max-height: 600px) {
+      .ZButton,
+      .XButton,
+      .CButton,
+      .SpaceButton{
+        top: -37.5%; /* Adjust this value to move the image up or down */
+      }
+    }
+    
+    
   
-  .popup.show {
-  visibility: visible;
-  }
   
-  .popup-content {
-  background-color: white;
-  border-radius: 10px;
-  padding: 20px;
-  width: 300%;
-  height: 400%;
-  max-width: 1200px;
-  max-height: 800px;
-  text-align: center;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  z-index: 1100;
-  }
-  
-  .RedX {
-  position: absolute;
-  top: 7.5%;
-  right: 18%;
-  max-width: 7%;
-  max-height: 7%;
-  cursor: pointer;
-  }
-  
-  .title-text{
-  position: absolute;
-  font-family: 'Press Start 2P', cursive;
-  top: 10%;
-  right: 43.5%;
-  transform: scale(2);
-  }
-  */
+ 
