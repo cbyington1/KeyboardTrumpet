@@ -1,217 +1,201 @@
-/* Root Variables */
-:root {
-  --scale-factor: 3.5;
-  --top-position: -43%;
-  --right-position: 69%;
-  --small-scale: 2;
-  --medium-scale: 2.5;
-  --large-scale: 3;
-}
-
-/* Responsive Breakpoints */
-@media (max-width: 1199.98px) {
-  :root {
-    --scale-factor: var(--large-scale);
-  }
-}
-
-@media (max-width: 991.98px) {
-  :root {
-    --scale-factor: var(--medium-scale);
-  }
-}
-
-@media (max-width: 767.98px) {
-  :root {
-    --scale-factor: var(--small-scale);
-  }
-}
-
-/* General Styling */
 body, html {
   margin: 0;
   padding: 0;
   height: 100%;
-}
-
-.container {
+  }
+  
+  .container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   position: relative;
-}
-
-.centered-image {
-  max-width: 25%; 
-  max-height: 25%;
-  position: relative;
-  right: 0%;
-  top: -25%;
-}
-
-.WebTitle {
+  }
+  
+  .centered-image {
+  max-width: 25%; /* Adjust the size of the image as needed */
+  max-height: 25%; /* Adjust the size of the image as needed */
+  position: relative; /* Ensure positioning works */
+  right: 0%; /* Move the image horizontally */
+  top: -25%; /* Move the image vertically */
+  }
+  
+  .WebTitle {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 0%;
-}
-
-.title-image {
-  max-width: 27.5%;
-  max-height: 27.5%;
-}
-
-.sound-image {
+  }
+  
+  .title-image {
+  max-width: 27.5%; /* Adjust the size of the image as needed */
+  max-height: 27.5%; /* Adjust the size of the image as needed */
+  }
+  
+  .sound-image {
   position: absolute;
   left: calc(50% + 43%);
   top: 5.125%;
   transform: translateY(-50%);
   max-width: 40%;
   max-height: 40%;
-  transition: left 0.5s;
-}
-
-.slider-container {
+  transition: left 0.5s; /* Add transition for smooth movement */
+  }
+  
+  .slider-container {
   transform: translateY(-50%);
-}
-
-.slider {
+  }
+  
+  .slider {
   display: flex;
   position: absolute;
   justify-content: center;
   align-items: center;
-  width: 10%;
-  height: 10%;
-  top: 4%;
-  right: 0%;
-  pointer-events: none;
-}
-
-.slider-control {
-  width: 50%;
+  width: 10%; /* Decrease the width to decrease the hover range */
+  height: 10%; /* Decrease the height to decrease the hover range */
+  top: 4%; /* Adjust the top position as needed */
+  right: 0%; /* Adjust the right position as needed */
+  transform: rotate(90deg); /* Rotate the slider 90 degrees clockwise */
+  pointer-events: none; /* Disable pointer events on the container */
+  }
+  .slider-control {
+  width: 50%; /* Adjust the width of the slider control */
   cursor: pointer;
-  pointer-events: auto;
-}
-
-/* Button Styles */
-.AButton, .SButton, .DButton, .ZButton, .XButton, .CButton {
+  pointer-events: auto; /* Enable pointer events on the slider control */
+  }
+  
+  .AButton {
   position: absolute;
-  transform: scale(var(--scale-factor));
+  top: -43%; /* Adjust this value to move the image up or down */
+  right: 69%;
+  transform: scale(3.5);
   image-rendering: pixelated;
-}
-
-.AButton {
-  top: var(--top-position);
-  right: var(--right-position);
-}
-
-.SButton {
-  top: var(--top-position);
-  right: calc(var(--right-position) - 3.5%);
-}
-
-.DButton {
-  top: var(--top-position);
-  right: calc(var(--right-position) - 7%);
-}
-
-.ZButton {
-  top: -36.5%;
-  right: var(--right-position);
-}
-
-.XButton {
-  top: -36.5%;
-  right: calc(var(--right-position) - 3.5%);
-}
-
-.CButton {
-  top: -36.5%;
-  right: calc(var(--right-position) - 7%);
-}
-
-.SpaceButton {
+  }
+  
+  .SButton {
   position: absolute;
-  top: -36.5%;
+  top: -43%; /* Adjust this value to move the image up or down */
+  right: 65.5%;
+  transform: scale(3.5);
+  image-rendering: pixelated;
+  }
+  
+  .DButton {
+  position: absolute;
+  top: -43%; /* Adjust this value to move the image up or down */
+  right: 62%;
+  transform: scale(3.5);
+  image-rendering: pixelated;
+  }
+  
+  .ZButton {
+  position: absolute;
+  top: -36.5%; /* Adjust this value to move the image up or down */
+  right: 69%;
+  transform: scale(3.5);
+  image-rendering: pixelated;
+  }
+  
+  .XButton {
+  position: absolute;
+  top: -36.5%; /* Adjust this value to move the image up or down */
+  right: 65.5%;
+  transform: scale(3.5);
+  image-rendering: pixelated;
+  }
+  
+  .CButton {
+  position: absolute;
+  top: -36.5%; /* Adjust this value to move the image up or down */
+  right: 62%;
+  transform: scale(3.5);
+  image-rendering: pixelated;
+  }
+  
+  .SpaceButton{
+  position: absolute;
+  top: -36.5%; /* Adjust this value to move the image up or down */
   right: 33.75%;
-  transform: scale(var(--scale-factor));
+  transform: scale(3.5);
   image-rendering: pixelated;
-}
-
-.LeftButton {
+  }
+  
+  .LeftButton {
   position: absolute;
-  top: var(--top-position);
+  top: -43%; /* Adjust this value to move the image up or down */
   right: 34%;
-  transform: scale(var(--scale-factor));
+  transform: scale(3.5);
   image-rendering: pixelated;
-}
-
-.DownButton {
+  }
+  
+  .DownButton {
   position: absolute;
-  top: var(--top-position);
+  top: -43%; /* Adjust this value to move the image up or down */
   right: 30.5%;
-  transform: scale(var(--scale-factor));
+  transform: scale(3.5);
   image-rendering: pixelated;
-}
-
-.RightButton {
+  }
+  
+  .RightButton {
   position: absolute;
-  top: var(--top-position);
+  top: -43%; /* Adjust this value to move the image up or down */
   right: 27%;
-  transform: scale(var(--scale-factor));
+  transform: scale(3.5);
   image-rendering: pixelated;
-}
-
-.Sixteen {
+  }
+  
+  .Sixteen {
   position: absolute;
   left: calc(50% + 46.5%);
   top: 5%;
   transform: translateY(-50%);
   max-width: 2.75%;
   max-height: 2.75%;
-  transition: left 0.5s;
+  transition: left 0.5s; /* Add transition for smooth movement */
   cursor: pointer;
   image-rendering: pixelated;
-}
-
-.note-container {
+  
+  }
+  
+  .note-container {
   text-align: center;
-  position: relative;
-}
-
-.note-text {
+  position: relative; /* Required for absolute positioning of child elements */
+  }
+  
+  .note-text {
   position: absolute;
-  top: -35rem;
+  top: -35rem; /* Adjust this value to move the div higher or lower */
   left: 47.75%;
   transform: translateX(-50%);
   font-family: 'Press Start 2P', cursive;
-}
-
-.note-container div {
-  display: none;
-}
-
-.GithubSymbol {
-  position: absolute;
-  top: .85%;
+  }
+  
+  .note-container div {
+  display: none; /* Ensure the div width is as per its content */
+  }
+  
+  .GithubSymbol {
+  position: absolute; /* or absolute, or fixed, depending on your layout needs */
+  top: .85%; /* Adjust the value to move the div up */
   left: 0%;
-  transform: translateX(-50%) scale(0.75);
+  transform: translateX(-50%); /* Center horizontally */
+  transform: scale(0.75);
   image-rendering: pixelated;
   cursor: pointer;
-}
-
-.LinkedinSymbol {
-  position: absolute;
-  top: .5%;
+  }
+  
+  .LinkedinSymbol {
+  position: absolute; /* or absolute, or fixed, depending on your layout needs */
+  top: .5%; /* Adjust the value to move the div up */
   left: 3.25%;
-  transform: translateX(-50%) scale(0.72);
+  transform: translateX(-50%); /* Center horizontally */
+  transform: scale(0.72);
   image-rendering: pixelated;
   cursor: pointer;
-}
-
-/*
-.books{
+  }
+  
+  /*
+  .books{
   position: absolute;
   left: calc(50% + 41.5%);
   top: 5.5%;
@@ -222,9 +206,9 @@ body, html {
   cursor: pointer;
   image-rendering: pixelated;
   
-}
-
-.popup {
+  }
+  
+  .popup {
   position: fixed;
   top: 0;
   left: 0;
@@ -235,40 +219,40 @@ body, html {
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  visibility: hidden; 
-}
-
-.popup.show {
-  visibility: visible; 
-}
-
-.popup-content {
+  visibility: hidden;
+  }
+  
+  .popup.show {
+  visibility: visible;
+  }
+  
+  .popup-content {
   background-color: white;
   border-radius: 10px;
   padding: 20px;
-  width: 300%; 
-  height: 400%; 
-  max-width: 1200px; 
-  max-height: 800px; 
+  width: 300%;
+  height: 400%;
+  max-width: 1200px;
+  max-height: 800px;
   text-align: center;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  z-index: 1100; 
-}
-
-.RedX {
+  z-index: 1100;
+  }
+  
+  .RedX {
   position: absolute;
-  top: 7.5%; 
-  right: 18%; 
+  top: 7.5%;
+  right: 18%;
   max-width: 7%;
   max-height: 7%;
   cursor: pointer;
-}
-
-.title-text{
+  }
+  
+  .title-text{
   position: absolute;
   font-family: 'Press Start 2P', cursive;
   top: 10%;
   right: 43.5%;
   transform: scale(2);
-}
-*/
+  }
+  */
