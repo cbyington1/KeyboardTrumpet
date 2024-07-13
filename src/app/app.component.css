@@ -231,30 +231,6 @@ body, html {
 	}
 }
 
-@media (max-width: 1500px) {
-	.AButton,.SButton,.DButton,.ZButton,.XButton,.CButton,.SpaceButton,.LeftButton,.DownButton,.RightButton{
-		transform: scale(2.75);
-		
-	}
-	.GithubSymbol{
-		transform: scale(0.65);
-		
-	}
-	.LinkedinSymbol{
-		transform: scale(0.63);
-		
-	}
-	.LeftButton{
-		right: 35.5%;
-	}
-	.DownButton{
-		right: 32%;
-	}
-	.RightButton{
-		right: 28.5%;
-	}
-}
-
 @media (max-width: 1440px) {
 	.AButton,.SButton,.DButton,.ZButton,.XButton,.CButton,.SpaceButton,.LeftButton,.DownButton,.RightButton{
 		transform: scale(2.6);
@@ -346,34 +322,6 @@ body, html {
 	.sound-image{
 		max-width: 3.25%;
 		max-height: 3.25%;
-	}
-}
-
-@media (max-width: 1200px) {
-	.AButton,.SButton,.DButton,.ZButton,.XButton,.CButton,.SpaceButton,.LeftButton,.DownButton,.RightButton{
-		transform: scale(2.2);
-		
-	}
-	.GithubSymbol{
-		transform: scale(0.49);
-		
-	}
-	.LinkedinSymbol{
-		transform: scale(0.50);
-		
-	}
-	.LeftButton{
-		right: 35.5%;
-	}
-	.DownButton{
-		right: 32%;
-	}
-	.RightButton{
-		right: 28.5%;
-	}
-	.sound-image{
-		max-width: 3%;
-		max-height: 3%;
 	}
 }
 
