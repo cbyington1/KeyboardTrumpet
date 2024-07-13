@@ -112,6 +112,11 @@ export class AppComponent {
     this.setTrumpet();
 
     // Create AudioContext after the component has been rendered
+    //if (typeof window !== 'undefined') {
+      //window.addEventListener('resize', this.applyScale.bind(this));
+    //}
+
+    // Create AudioContext after the component has been rendered
     afterNextRender(() => {
       // Check if AudioContext is available
       if (typeof AudioContext !== 'undefined') {
@@ -977,16 +982,4 @@ export class AppComponent {
     if(noteText)
     noteText.textContent = 'Note: ' + delta;
   }
-
-  /*
-  popUp() {
-    var popUp = document.getElementById('popup');
-    if (popUp && popUp.style.visibility === 'visible') {
-      popUp.style.visibility = 'hidden';
-    } else if (popUp) {
-      popUp.style.visibility = 'visible';
-    }
-    console.log("yo");
-  }
-    */
 }

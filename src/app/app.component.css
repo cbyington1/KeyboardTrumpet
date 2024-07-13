@@ -231,6 +231,30 @@ body, html {
 	}
 }
 
+@media (max-width: 1500px) {
+	.AButton,.SButton,.DButton,.ZButton,.XButton,.CButton,.SpaceButton,.LeftButton,.DownButton,.RightButton{
+		transform: scale(2.75);
+		
+	}
+	.GithubSymbol{
+		transform: scale(0.65);
+		
+	}
+	.LinkedinSymbol{
+		transform: scale(0.63);
+		
+	}
+	.LeftButton{
+		right: 35.5%;
+	}
+	.DownButton{
+		right: 32%;
+	}
+	.RightButton{
+		right: 28.5%;
+	}
+}
+
 @media (max-width: 1440px) {
 	.AButton,.SButton,.DButton,.ZButton,.XButton,.CButton,.SpaceButton,.LeftButton,.DownButton,.RightButton{
 		transform: scale(2.6);
@@ -295,9 +319,6 @@ body, html {
 	.slider{
 		top: 3.95%;
 	}
-	.note-text{
-		top: -30rem;
-	}
 }
 
 @media (max-width: 1280px) {
@@ -325,6 +346,34 @@ body, html {
 	.sound-image{
 		max-width: 3.25%;
 		max-height: 3.25%;
+	}
+}
+
+@media (max-width: 1200px) {
+	.AButton,.SButton,.DButton,.ZButton,.XButton,.CButton,.SpaceButton,.LeftButton,.DownButton,.RightButton{
+		transform: scale(2.2);
+		
+	}
+	.GithubSymbol{
+		transform: scale(0.49);
+		
+	}
+	.LinkedinSymbol{
+		transform: scale(0.50);
+		
+	}
+	.LeftButton{
+		right: 35.5%;
+	}
+	.DownButton{
+		right: 32%;
+	}
+	.RightButton{
+		right: 28.5%;
+	}
+	.sound-image{
+		max-width: 3%;
+		max-height: 3%;
 	}
 }
 
@@ -356,9 +405,42 @@ body, html {
 	}
 }
 
-@media (max-height: 600px) {
+@media (max-height: 875px) {
 	.ZButton,.XButton,.CButton,.SpaceButton{
-		top: -37.5%;
+		top: -37%;
 		
+	}
+	.note-text{
+		top: -32rem;
+	}
+}
+
+@media (max-height: 800px) {
+	.ZButton,.XButton,.CButton,.SpaceButton{
+		top: -36.75%;
+		
+	}
+	.note-text{
+		top: -29.5rem;
+	}
+}
+
+@media (max-height: 750px) {
+	.ZButton,.XButton,.CButton,.SpaceButton{
+		top: -36.5%;
+		
+	}
+	.note-text{
+		top: -26rem;
+	}
+}
+
+@media (max-height: 700px) {
+	.ZButton,.XButton,.CButton,.SpaceButton{
+		top: -36%;
+		
+	}
+	.note-text{
+		top: -25rem;
 	}
 }
