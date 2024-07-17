@@ -52,6 +52,15 @@ export class AppComponent {
     'assets/TrumpetSounds/F6.mp3',
   ];
 
+  buttonsPreload: string[] = ['assets/Buttons/A.png', 'assets/Buttons/APressed.png', 'assets/Buttons/S.png',
+     'assets/Buttons/SPressed.png', 'assets/Buttons/D.png', 'assets/Buttons/DPressed.png', 'assets/Buttons/Z.png', 'assets/Buttons/ZPressed.png',
+    'assets/Buttons/X.png', 'assets/Buttons/XPressed.png', 'assets/Buttons/C.png', 'assets/Buttons/CPressed.png', 
+    'assets/Buttons/left.png', 'assets/Buttons/leftPressed.png', 'assets/Buttons/down.png', 'assets/Buttons/downPressed.png', 
+    'assets/Buttons/right.png', 'assets/Buttons/rightPressed.png', 'assets/Buttons/SPACENEW.png', 'assets/Buttons/PressedSPACENEW.png'
+  ];
+  trumpetsPreload: string[] = ['assets/Trumpets/Trumpet0.png', 'assets/Trumpets/Trumpet1.png', 'assets/Trumpets/Trumpet2.png', 'assets/Trumpets/Trumpet12.png', 
+    'assets/Trumpets/Trumpet13.png', 'assets/Trumpets/Trumpet23.png', 'assets/Trumpets/Trumpet123.png', 'assets/Trumpets/Trumpet3.png'];
+
   currentTrumpetIndex: number = 0;
   currentTrumpet: string = this.trumpets[this.currentTrumpetIndex];
 
@@ -132,6 +141,7 @@ export class AppComponent {
 
       // After AudioContext is created, preload audio files
       this.preloadAudios();
+      this.preloadImages(); // Preload images
     });
   }
 
@@ -162,6 +172,27 @@ export class AppComponent {
       
       // Store the preloaded Audio object
       this.preloadedAudios[url] = audioBuffer;
+    }
+  }
+
+  async preloadImages() {
+    const imageUrls = [...this.trumpetsPreload, ...this.buttonsPreload].map(image => `${image}`);
+    const promises = imageUrls.map(async (url) => {
+      const img = new Image();
+      img.src = url;
+      return new Promise((resolve, reject) => {
+        img.onload = () => {
+          resolve(img);
+        };
+        img.onerror = (err) => reject(err);
+      });
+    });
+
+    try {
+      await Promise.all(promises);
+      console.log('All images preloaded');
+    } catch (error) {
+      console.error('Error preloading images', error);
     }
   }
   
