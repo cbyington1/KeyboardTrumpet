@@ -20,9 +20,6 @@ An interactive web-based trumpet simulator that lets you play musical notes usin
   - High-quality trumpet sound samples
   - Volume control slider
   - Visual volume indicator
-- **Social Links**:
-  - GitHub profile link
-  - LinkedIn profile integration
 
 ## How to Play
 
@@ -94,16 +91,3 @@ ng serve
 - Responsive layout
 - Interactive sound controls
 
-## Future Enhancements
-- Tutorial mode
-- Additional sound samples
-- Recording capabilities
-- More instrument options
-
-## Contributing
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## Author
-Camden Byington
-- GitHub: [cbyington1](https://github.com/cbyington1)
-- LinkedIn: [Camden Byington](https://www.linkedin.com/in/camden-byington-bbbb71220/)
