@@ -1,27 +1,109 @@
-# KeyboardTrumpet
+# Keyboard Trumpet
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.6.
+An interactive web-based trumpet simulator that lets you play musical notes using keyboard controls. Built with Angular, this application provides a realistic trumpet playing experience with visual feedback and audio output.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Interactive Trumpet Display**: 
+  - Eight different trumpet valve combinations (Trumpet0.png through Trumpet123.png)
+  - Real-time valve state visualization
+  - Note display showing current played note
+- **Keyboard Controls**: 
+  - Arrow keys (←, ↓, →) control the trumpet valves
+  - Letter keys (A, S, D, Z, X, C) play different notes
+  - Spacebar for additional sound control
+- **Real-time Visual Feedback**:
+  - Dynamic trumpet valve visualization
+  - Button highlighting when pressed
+  - Current note display
+- **Audio Features**:
+  - High-quality trumpet sound samples
+  - Volume control slider
+  - Visual volume indicator
+- **Social Links**:
+  - GitHub profile link
+  - LinkedIn profile integration
 
-## Code scaffolding
+## How to Play
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. **Valve Control**:
+   - Use arrow keys (←, ↓, →) to control trumpet valves
+   - Different valve combinations produce different notes
+   - Visual feedback shows current valve configuration
 
-## Build
+2. **Note Playing**:
+   - Use A, S, D, Z, X, C keys to play different notes
+   - Combine with valve controls for full note range
+   - Current note is displayed on screen when enabled
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+3. **Sound Control**:
+   - Adjust volume using the slider control
+   - Volume indicator shows current level
+   - Spacebar provides additional sound control
 
-## Running unit tests
+## Technical Details
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Prerequisites
+- Node.js
+- Angular CLI
 
-## Running end-to-end tests
+### Installation
+1. Clone the repository
+```bash
+git clone [repository-url]
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+2. Install dependencies
+```bash
+npm install
+```
 
-## Further help
+3. Run the development server
+```bash
+ng serve
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+4. Navigate to `http://localhost:4200/`
+
+### Project Structure
+- Uses Angular framework with standalone components
+- Implements Web Audio API for high-quality sound processing
+- Asset management for images and audio files:
+  - Trumpet images (`assets/Trumpets/`)
+  - Button images (`assets/Buttons/`)
+  - Sound symbols (`assets/SoundSymbols/`)
+  - Trumpet sounds (`assets/TrumpetSounds/`)
+- Responsive design with flex-based layouts
+
+### Key Components
+- Audio processing with Web Audio API:
+  - Dynamic sound loading with AudioContext
+  - Real-time volume control
+  - Audio buffer management for smooth playback
+- Interactive UI elements:
+  - Volume slider with visual feedback
+  - Note display system
+  - Dynamic button states
+- Comprehensive keyboard event handling
+- State management for trumpet valve configurations
+- Social media integration with GitHub and LinkedIn links
+
+## Design Features
+- Clean, intuitive user interface
+- Real-time visual feedback
+- Responsive layout
+- Interactive sound controls
+
+## Future Enhancements
+- Tutorial mode
+- Additional sound samples
+- Recording capabilities
+- More instrument options
+
+## Contributing
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## Author
+Camden Byington
+- GitHub: [cbyington1](https://github.com/cbyington1)
+- LinkedIn: [Camden Byington](https://www.linkedin.com/in/camden-byington-bbbb71220/)
